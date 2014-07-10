@@ -6,11 +6,11 @@ Usage is by including it require-dev and running composer update. For dev enviro
 
 ## Included tools
 
-* PHPUnit
-* PHPDocumentor
-* PHPCS
-* PHPMD
-* PHPCPD
-* PHPLOC
-* PHP_Depend
-* PHP Codebrowser
+* [PHPUnit](http://phpunit.de/)
+* [phpDocumentor](http://www.phpdoc.org/)
+* [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+* [PHPMD](http://phpmd.org/)
+* [PHPCD](https://github.com/sebastianbergmann/phpcpd)
+* [PHPLOC](https://github.com/sebastianbergmann/phploc)
+* [PHP Depend](http://pdepend.org/)
+* [PHP_CodeBrowser](https://github.com/Mayflower/PHP_CodeBrowser)
