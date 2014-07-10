@@ -1,0 +1,9 @@
+<ruleset name="Legacy">
+ <description>Legacy code checks</description>
+ <!-- Use the PSR1 standard, but exclude namespace and classname checking as that will not work in older projects such as Symfony 1.x -->
+ <rule ref="PSR1">
+    <!-- This also disables checking if every class is in its own file -->
+    <exclude name="PSR1.Classes.ClassDeclaration"/>
+    <exclude name="Squiz.Classes.ValidClassName"/>"
+ </rule>
+</ruleset>

@@ -1,0 +1,21 @@
+{
+    "name": "evolution7/qa-tools",
+    "description": "Code Quality tools for CI integration, including our configuration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arjen Schwarz",
+            "email": "arjen@evolution7.com.au"
+        }
+    ],
+    "require": {
+        "phpdocumentor/phpdocumentor": "2.*",
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "1.4.*",
+        "phpunit/phpunit": "4.*",
+        "sebastian/phpcpd": "*",
+        "phploc/phploc": "*",
+        "pdepend/pdepend": "2.*",
+        "mayflower/php-codebrowser": "~1.1"
+    }
+}
