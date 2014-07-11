@@ -15,7 +15,7 @@
         "phpunit/phpunit": "4.*",
         "sebastian/phpcpd": "*",
         "phploc/phploc": "*",
-        "pdepend/pdepend": "2.*",
+        "pdepend/pdepend": "1.*",
         "mayflower/php-codebrowser": "~1.1"
     }
 }
