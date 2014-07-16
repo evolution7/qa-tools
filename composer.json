@@ -1,11 +1,13 @@
 {
     "name": "evolution7/qa-tools",
-    "description": "Code Quality tools for CI integration and git hooks",
+    "description": "A collection of Code Quality tools for CI integration, and various git hooks",
+    "keywords": "githooks, ci, continuous-integration, qa, quality"
+    "homepage": "https://github.com/evolution7/qa-tools"
     "license": "MIT",
     "authors": [
         {
-            "name": "Arjen Schwarz",
-            "email": "arjen@evolution7.com.au"
+            "name": "Evolution 7",
+            "email": "dev@evolution7.com.au"
         }
     ],
     "require": {

@@ -1,8 +1,14 @@
 # Evolution 7 QA Tools
 
-This is a single repository for including our required QA tools through Composer.
+This is a single repository for including all QA tools through Composer. If you install this as a `require-dev` requirement, you will have access to it on development and CI machines but don't need to install all the dependencies when deploying to your production environment.
 
-Usage is by including it require-dev and running composer update. For dev environments that means you will have access to all of the included tools for running them manually or through the CI system.
+## Installation
+
+As stated above, the preferred way is to install it in your require-dev using
+
+```bash
+composer require --dev "evolution7/qa-tools=1.*"
+```
 
 ## Included QA tools
 
@@ -14,6 +20,10 @@ Usage is by including it require-dev and running composer update. For dev enviro
 * [PHPLOC](https://github.com/sebastianbergmann/phploc)
 * [PHP Depend](http://pdepend.org/)
 * [PHP_CodeBrowser](https://github.com/Mayflower/PHP_CodeBrowser)
+
+## CI examples
+
+In the ci-examples directory you will find usage examples for these tools in a Continuous Integration setup.
 
 ## Git hooks
 
@@ -33,3 +43,7 @@ The following hooks are present:
 * pre-commit/00-protect-master-staging  - Prevent commits to master and staging branches.
 * pre-commit/01-composer    - Runs a git composer validate command before a commit.
 * pre-commit/11-phplint    - Runs a lint check before commit.
+
+# Contribute?
+
+Feel free to fork this repository for your own customisations, or to create pull requests for including your preferred QA tool, Git Hook, or even CI example.
