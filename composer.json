@@ -1,6 +1,6 @@
 {
     "name": "evolution7/qa-tools",
-    "description": "Code Quality tools for CI integration, including our configuration",
+    "description": "Code Quality tools for CI integration and git hooks",
     "license": "MIT",
     "authors": [
         {

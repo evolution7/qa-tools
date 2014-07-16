@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+# This pre-commit hook will prevent any commit to forbidden branches
+# (by default, "staging" and "production").
+
+if (ARGV[0]=='--about')
+  puts "Prevent commits to master and staging branches."
+  exit 1
+end
+
+FORBIDDEN_BRANCHES = ["master", "stage", "staging"]
+
+def current_branch()
+  branches = `git branch --no-color`.split(/\n/)
+  current = branches.select{ |b| b =~ /\s*\*/ }.first
+  current.gsub(/[\*\s]/, "")
+end
+
+branch = current_branch
+
+if (FORBIDDEN_BRANCHES.include?(branch))
+  puts
+  puts " STOP THE PRESS!"
+  puts " You are trying to commit on the *#{branch}* branch."
+  puts " Surely you don't mean that?"
+  puts
+  puts " If you really do, force the commit by adding --no-verify to the command."
+  puts
+
+  exit 1
+end

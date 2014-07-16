@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# A git hook for building the classes after a pull
+#
+
+case "${1}" in
+    --about )
+        echo -n "Symfony build model after a pull."
+        ;;
+    * )
+        echo -e -n "\033[0;32mChecking Symfony version...\033[1;32m\n";
+        if [[ -f symfony ]]; then
+            if [[ $(php symfony --version | grep ' 1.4.' -c) -eq "1" ]]; then
+                echo -e -n "\033[0;32mSymfony 1.4 found\033[1;32m\n";
+                COMMAND='php symfony propel:build --all-classes'
+            else
+                echo -e -n "\033[0;32mSymfony 1.1 found\033[1;32m\n";
+                COMMAND='php symfony propel:build-model'
+            fi
+            echo -e -n "\033[0;32mBuilding classes\033[1;32m\n";
+            $($COMMAND)
+            echo -e -n "\033[0;34mClasses built\033[1;34m\n";
+        else
+            echo -e -n "\033[0;34mNot a Symfony project\033[1;34m\n";
+        fi
+        ;;
+esac

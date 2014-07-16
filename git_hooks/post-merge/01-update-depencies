@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# A git hook for automatically running composer install after a pull
+#
+
+case "${1}" in
+    --about )
+        echo -n "Updates dependencies with composer and git submodule."
+        ;;
+    * )
+        echo -e -n "\033[032;mLooking for composer...\033[1;32m\n";
+        if [[ -f "composer.json" ]]; then
+            echo -e -n "\033[0;32mComposer found!\033[1;32m\n";
+            echo -e -n "\033[0;32mRunning composer install\033[1;32m\n";
+            composer install;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mEverything up to date!\033[1;34m\n";
+            fi
+            echo -e -n "\033[0;32mIt might still have submodules as well\033[1;32m\n";
+        else
+            echo -e -n "\033[0;34mNo composer found :(\033[1;34m\n";
+        fi
+        echo -e -n "\033[0;32mRunning submodule update\033[1;32m\n";
+        git submodule update --init --recursive;
+        if [[ $? == 0 ]]; then
+            echo -e -n "\033[0;34mNo submodules to update\033[1;34m\n";
+        fi
+        ;;
+esac

@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+# A git hook for clearing the symfony cache after a pull
+#
+
+case "${1}" in
+    --about )
+        echo -n "Symfony clear cache after a pull."
+        ;;
+    * )
+        echo -e -n "\033[0;32mIs this a symfony 1 project?\033[1;32m\n";
+        if [[ -f "symfony" ]]; then
+            echo -e -n "\033[0;32mIt is!\033[1;32m\n";
+            echo -e -n "\033[0;32mClearing cache\033[1;32m\n";
+            sudo php symfony cache:clear;
+            echo -e -n "\033[0;34mCache cleared\033[1;34m\n";
+        else
+            echo -e -n "\033[0;32mIt's not, so no need for running clear cache\033[1;32m\n";
+        fi
+        ;;
+esac

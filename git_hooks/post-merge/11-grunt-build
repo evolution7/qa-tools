@@ -1,0 +1,52 @@
+#!/bin/bash
+#
+# A git hook for automatically updating npm/bower and running grunt build
+#
+
+case "${1}" in
+    --about )
+        echo -n "Updates npm/bower and runs grunt build after a pull."
+        ;;
+    * )
+        echo -e -n "\033[0;32mChecking for grunt...\033[1;32m\n";
+        if [[ -f "Gruntfile.js" ]]; then
+            echo -e -n "\033[0;32mLocated grunt in root dir\033[1;32m\n";
+            echo -e -n "\033[0;32mRunning npm install\033[1;32m\n";
+            npm install;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mNPM up to date\033[1;34m\n";
+            fi
+            echo -e -n "\033[0;32mRunning bower install\033[1;32m\n";
+            bower install;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mBower up to update\033[1;34m\n";
+            fi
+            echo -e -n "\033[0;32mRunning grunt build\033[1;32m\n";
+            grunt build;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mBower up to date\033[1;34m\n";
+            fi
+        elif [[ -f "web/app/themes/roots-e7/Gruntfile.js" ]]; then
+            echo -e -n "\033[0;34mLocated grunt in wordpress dir\033[1;32m\n";
+            echo -e -n "\033[0;34mRunning npm install\033[1;32m\n";
+            cd web/app/themes/roots-e7;
+            npm install;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mNothing to update\033[1;34m\n";
+            fi
+            echo -e -n "\033[0;34mRunning bower install\033[1;32m\n";
+            bower install;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mNothing to update\033[1;34m\n";
+            fi
+            echo -e -n "\033[0;34mRunning grunt build\033[1;32m\n";
+            grunt build;
+            if [[ $? == 0 ]]; then
+                echo -e -n "\033[0;34mNothing to build\033[1;34m\n";
+            fi
+            cd ../../../..;
+        else
+            echo -e -n "\033[0;34mGrunt not found\033[1;32m\n";
+        fi
+        ;;
+esac
