@@ -1,8 +1,8 @@
 {
     "name": "evolution7/qa-tools",
     "description": "A collection of Code Quality tools for CI integration, and various git hooks",
-    "keywords": "githooks, ci, continuous-integration, qa, quality",
-    "homepage": "https://github.com/evolution7/qa-tools"
+    "keywords": ["githooks", "ci", "continuous integration", "qa", "quality"],
+    "homepage": "https://github.com/evolution7/qa-tools",
     "license": "MIT",
     "authors": [
         {
