@@ -127,7 +127,6 @@
         <exec executable="${basedir}/vendor/bin/phpdoc">
             <arg value="--directory=${basedir}" />
             <arg value="--title=[[BUNDLENAME]]" />
-            <arg value="--config=/var/lib/jenkins/ev7config/PHPDOC/phpdoc.dist.xml" />
             <arg value="--target=${basedir}/build/api" />
             <arg value="--ignore=vendor/*" />
         </exec>
