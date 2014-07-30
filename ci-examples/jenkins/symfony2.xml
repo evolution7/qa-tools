@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="[[PROJECTNAME]]" default="build">
+    <property name="bin-dir" location="${basedir}/bin"/>
+
     <target name="build" depends="prepare,composer,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,phpunit,phpcb"/>
 
     <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
@@ -46,7 +48,7 @@
     </target>
 
     <target name="phploc" description="Measure project size using PHPLOC">
-        <exec executable="${basedir}/vendor/bin/phploc">
+        <exec executable="${bin-dir}/phploc">
             <arg value="--log-csv" />
             <arg value="${basedir}/build/logs/phploc.csv" />
             <arg path="${basedir}/src" />
@@ -54,7 +56,7 @@
     </target>
 
     <target name="pdepend" description="Calculate software metrics using PHP_Depend">
-        <exec executable="${basedir}/vendor/bin/pdepend">
+        <exec executable="${bin-dir}/pdepend">
             <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
             <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
             <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
@@ -63,7 +65,7 @@
     </target>
 
     <target name="phpmd" description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
-        <exec executable="${basedir}/vendor/bin/phpmd">
+        <exec executable="${bin-dir}/phpmd">
             <arg path="${basedir}/src" />
             <arg value="text" />
             <arg value="${basedir}/vendor/evolution7/qa-tools/rulesets/phpmd/symfony2.xml" />
@@ -73,7 +75,7 @@
     </target>
 
     <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
-        <exec executable="${basedir}/vendor/bin/phpmd">
+        <exec executable="${bin-dir}/phpmd">
             <arg path="${basedir}/src" />
             <arg value="xml" />
             <arg value="${basedir}/vendor/evolution7/qa-tools/rulesets/phpmd/symfony2.xml" />
@@ -85,7 +87,7 @@
     </target>
 
     <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
-        <exec executable="${basedir}/vendor/bin/phpcs">
+        <exec executable="${bin-dir}/phpcs">
             <arg value="--standard=PSR2" />
             <arg value="--ignore=DataFixtures/*,Resources/*" />
             <arg path="${basedir}/src" />
@@ -93,7 +95,7 @@
     </target>
 
     <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
-        <exec executable="${basedir}/vendor/bin/phpcs" output="/dev/null">
+        <exec executable="${bin-dir}/phpcs" output="/dev/null">
             <arg value="--report=checkstyle" />
             <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
             <arg value="--standard=PSR2" />
@@ -103,7 +105,7 @@
     </target>
 
     <target name="phpcpd" description="Find duplicate code using PHPCPD">
-        <exec executable="${basedir}/vendor/bin/phpcpd">
+        <exec executable="${bin-dir}/phpcpd">
             <arg value="--log-pmd" />
             <arg value="${basedir}/build/logs/pmd-cpd.xml" />
             <arg value="--exclude" />
@@ -113,23 +115,23 @@
     </target>
 
     <target name="phpdoc" description="Generate API documentation using phpDocumentor">
-        <exec executable="${basedir}/vendor/bin/phpdoc">
+        <exec executable="${bin-dir}/phpdoc">
             <arg value="--directory=${basedir}/src" />
-            <arg value="--title=[[PROJECTNAME]]" />
+            <arg value="--title='${ant.project.name}'" />
             <arg value="--target=${basedir}/build/api" />
             <arg value="--ignore=Resources/*" />
         </exec>
     </target>
 
     <target name="phpunit" description="Run unit tests with PHPUnit">
-        <exec executable="${basedir}/vendor/bin/phpunit" failonerror="true">
+        <exec executable="${bin-dir}/phpunit" failonerror="true">
             <arg value="-c" />
             <arg path="${basedir}/app/phpunit.xml.dist" />
         </exec>
     </target>
 
     <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
-        <exec executable="${basedir}/vendor/bin/phpcb">
+        <exec executable="${bin-dir}/phpcb">
             <arg value="--log" />
             <arg path="${basedir}/build/logs" />
             <arg value="--source" />
