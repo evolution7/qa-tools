@@ -1,6 +1,7 @@
 # 1.0.2
 
 * Added `bin-dir` property to ci-examples to replace `${basedir}/vendor/bin` instances
+* Changed `bin-dir` value to `${basedir}/bin` for symfony2
 * Used `'${ant.project.name}'` instead of `[[PROJECTNAME]]` for phpdoc in ci-examples
 
 # 1.0.1
