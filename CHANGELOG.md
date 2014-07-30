@@ -1,3 +1,8 @@
+# 1.0.2
+
+* Added `bin-dir` property to ci-examples to replace `${basedir}/vendor/bin` instances
+* Used `'${ant.project.name}'` instead of `[[PROJECTNAME]]` for phpdoc in ci-examples
+
 # 1.0.1
 
 * Bugfix: Removed a hardcoded reference to internal settings from an example.
