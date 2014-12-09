@@ -18,6 +18,7 @@
         "sebastian/phpcpd": "*",
         "phploc/phploc": "*",
         "pdepend/pdepend": "1.*",
-        "mayflower/php-codebrowser": "~1.1"
+        "mayflower/php-codebrowser": "~1.1",
+        "fabpot/php-cs-fixer": "1.2.*"
     }
 }
