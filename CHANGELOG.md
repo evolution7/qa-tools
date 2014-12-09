@@ -1,3 +1,8 @@
+# 1.0.3
+
+* Add mockery/mockery to composer require section
+* Add fabpot/php-cs-fixer to composer require section
+
 # 1.0.2
 
 * Added `bin-dir` property to ci-examples to replace `${basedir}/vendor/bin` instances
